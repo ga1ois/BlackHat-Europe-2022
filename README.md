@@ -1,2 +1,12 @@
 # BlackHat-Europe-2022
 Select Bugs From Binary Where Pattern Like CVE-1337-Days
+
+Abstract
+
+Static code review is an effective way to discover vulnerability variants and exploitation primitives, but two of the most challenging tasks for static analysis are the effective code pattern extraction from huge amounts of various bugs and the efficient code pattern searching from tons of different modules, especially for close source software like Windows.
+
+This presentation discusses our practices and experiences for these two challenges. It mainly covers how we extract four unique code patterns for different vulnerability types and exploitation primitives, and how we use them to automatically find vulnerabilities and exploitation primitives on Windows with the help of our new binary code pattern searching tool: Leviathan.
+
+In this presentation we focus on four unique patterns to find classical file hijacking vulnerabilities, reparse point memory corruption vulnerabilities, ACL overwriting logic vulnerabilities and pool spray primitives for the RDP exploit on Windows. Specifically, in the ACL overwriting pattern part, we show how to find an interesting 0-day logic vulnerability in Hyper-V which derived from our vulnerability used in Pwn2Own 2021, it was first rejected by Microsoft but finally considered to be in the scope for a patch and even eligible for the bounty program after we submitted a new attacking vector. We will reveal the whole story behind it. Also worth mentioning, in the pool spray primitive pattern part, we show how to find three unique and universal pool spray primitives for the RDP exploit. They could be used in the well known RDP vulnerability BlueKeep(CVE-2019-0708) and are different from all other public exploitation techniques. All details, including the vulnerability model definition, the vulnerability pattern extraction, code query construction, and result review as well as PoC creation in each case, are covered.
+
+Besides, we also introduce a new code query language tool designed to automatically find vulnerabilities and exploitation primitives with code patterns in binaries. Powered by IDA Pro's Hexray ctree APIs and our core code pattern search primitives based on them, it does not only contain features like taint tracking and cross binary code path tracing, but also has SQL query interface to facilitate the entire process. Select your own bugs and primitives from binary where you like!
